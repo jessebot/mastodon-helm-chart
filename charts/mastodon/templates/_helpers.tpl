@@ -79,7 +79,7 @@ Create the name of the assets persistent volume to use
 {{- if .Values.mastodon.persistence.assets.existingClaim }}
     {{- printf "%s" (tpl .Values.mastodon.persistence.assets.existingClaim $) -}}
 {{- else -}}
-    {{- printf "%s-assets" (include "common.names.fullname" .) -}}
+    {{- printf "%s-assets" (include "mastodon.name" .) -}}
 {{- end -}}
 {{- end -}}
 
@@ -90,7 +90,7 @@ Create the name of the system persistent volume to use
 {{- if .Values.mastodon.persistence.system.existingClaim }}
     {{- printf "%s" (tpl .Values.mastodon.persistence.system.existingClaim $) -}}
 {{- else -}}
-    {{- printf "%s-system" (include "common.names.fullname" .) -}}
+    {{- printf "%s-system" (include "mastodon.name" .) -}}
 {{- end -}}
 {{- end -}}
 
@@ -117,7 +117,7 @@ Get the mastodon secret.
 {{- if .Values.mastodon.secrets.existingSecret }}
     {{- printf "%s" (tpl .Values.mastodon.secrets.existingSecret $) -}}
 {{- else -}}
-    {{- printf "%s" (include "common.names.fullname" .) -}}
+    {{- printf "%s" (include "mastodon.name" .) -}}
 {{- end -}}
 {{- end -}}
 
@@ -128,7 +128,7 @@ Get the smtp secret.
 {{- if .Values.mastodon.smtp.existingSecret }}
     {{- printf "%s" (tpl .Values.mastodon.smtp.existingSecret $) -}}
 {{- else -}}
-    {{- printf "%s-smtp" (include "common.names.fullname" .) -}}
+    {{- printf "%s-smtp" (include "mastodon.name" .) -}}
 {{- end -}}
 {{- end -}}
 
@@ -143,7 +143,7 @@ Get the postgresql secret.
 {{- else if and .Values.externalDatabase.enabled .Values.externalDatabase.existingSecret -}}
     {{- printf "%s" (tpl .Values.externalDatabase.existingSecret $) -}}
 {{- else -}}
-    {{- printf "%s" (include "common.names.fullname" .) -}}
+    {{- printf "%s" (include "mastodon.name" .) -}}
 {{- end -}}
 {{- end -}}
 
